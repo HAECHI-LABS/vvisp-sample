@@ -1,13 +1,16 @@
 pragma solidity ^0.4.23;
 
-import './libs/Ownable.sol';
-import './libs/SafeMath.sol';
 import './HaechiV1.sol';
 
-contract HaechiGym is Ownable {
-    using SafeMath for uint;
+contract HaechiGyme {
+    HaechiV1 haechi;
 
-    function makeFaster(address _haechi) public {
-        HaechiV1(_haechi).increaseVelocity(10);
+    function makeFaster() public {
+        uint haechiId = haechi.haechiIds(msg.sender);
+        haechi.increaseVelocity(haechiId, 10);
+    }
+
+    function initialize(address _haechi) public {
+        haechi = HaechiV1(_haechi);
     }
 }

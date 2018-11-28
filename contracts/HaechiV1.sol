@@ -1,30 +1,36 @@
 pragma solidity ^0.4.23;
 
-import './libs/Ownable.sol';
 import './libs/SafeMath.sol';
 
-contract HaechiV1 is Ownable {
+contract HaechiV1 {
     using SafeMath for uint;
 
-    uint public velocity = 100;
-    uint public distance = 0;
     address public gym;
+    mapping(address => uint) public haechiIds;
+    mapping(uint => uint) public velocities;
+    mapping(uint => uint) public distances;
 
     modifier onlyGym() {
         require(msg.sender == gym);
         _;
     }
 
-    function initialize(address _owner, address _gym) public {
-        setOwner(_owner);
+    function initialize(address _gym) public {
         gym = _gym;
     }
 
-    function run() onlyOwner public {
-        distance = distance.add(velocity);
+    function makeNewHaechi(uint _id) public {
+        require(velocities[_id] == 0 && distances[_id] == 0);
+        haechiIds[msg.sender] = _id;
+        velocities[_id] = 10;
     }
 
-    function increaseVelocity(uint _diff) onlyGym public {
-        velocity = velocity.add(_diff);
+    function run() public {
+        uint id = haechiIds[msg.sender];
+        distances[id] = distances[id].add(velocities[id]);
+    }
+
+    function increaseVelocity(uint _haechiId, uint _diff) onlyGym public {
+        velocities[_haechiId] = velocities[_haechiId].add(_diff);
     }
 }
