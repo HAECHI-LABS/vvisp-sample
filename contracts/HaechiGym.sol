@@ -2,7 +2,7 @@ pragma solidity ^0.4.23;
 
 import './HaechiV1.sol';
 
-contract HaechiGyme {
+contract HaechiGym {
     HaechiV1 haechi;
 
     function makeFaster() public {

@@ -10,7 +10,13 @@
     },
     "Gym": {
       "path": "contracts/HaechiGym.sol",
-      "upgradeable": true
+      "upgradeable": true,
+      "initialize": {
+        "functionName": "initialize",
+        "arguments": [
+          "${contracts.Haechi.address}"
+        ]
+      }
     }
   }
 }
