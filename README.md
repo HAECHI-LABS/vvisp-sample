@@ -23,7 +23,10 @@ In `service.vvisp.json`, change
         "path": "contracts/HaechiV1.sol",
         "initialize": {
           "functionName": "initialize",
-          "arguments": ["${variables.owner}"]
+          "arguments": [
+            "${variables.owner}",
+            "${contracts.Gym.address}"
+          ]
         }
       },
       ...
