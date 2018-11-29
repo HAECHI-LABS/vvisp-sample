@@ -2,7 +2,42 @@
 
 > Sample repository about utilizing [vvisp](https://github.com/HAECHI-LABS/vvisp)
 
-## Quick Deployment of This Sample
+## Quick Usage
+**1. Install vvsip**
+```bash
+$ npm install -g @haechi-labs/vvisp
+#or you can run
+$ yarn global add @haechi-labs/vvisp
+```
+**2. Initialize your directory**
+```bash
+$ mkdir vvisp-sample
+$ cd vvisp-sample
+$ vvisp init
+```
+**3. Make your Contracts at `contracts/`**
+
+We do not recommend generated contracts by `$ vvisp init`.
+Now, you can use `abi-to-script`, `compile` and `flatten` commands.
+
+**4. Set `.env` file**
+
+Please set environment variables in `.env` file.
+See [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#env) for more information about `.env`.
+Now you can use `deploy-contract` command.
+
+**5. Set `service.vvisp.json` file**
+
+Please set information about your DApp service in `service.vvisp.json`.
+See [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#service) for more information about `service.vvisp.json`.
+Now you can use `deploy-service` command.
+
+
+## Quick Deployment of This Sample Repository
+Download sample repository for test.
+```bash
+git clone https://github.com/HAECHI-LABS/vvisp-sample
+```
 ### Deploy First Version
 
 1. Install `vvisp`. See [Details](https://github.com/HAECHI-LABS/vvisp#usage)
