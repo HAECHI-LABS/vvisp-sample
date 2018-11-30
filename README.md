@@ -46,10 +46,15 @@ Change the written address at `variables/owner` in `service.vvisp.json` file to 
 1. Change the written mnemonic words at `MNEMONIC` in `.env` file to mnemonic words of owner account.
 (If you don't want to connect to local 8545, see [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#env) and change `.env`.)
 1. Run `vvisp deploy-service` at root directory.
-1. Wait for deploying the sample app. Then, `state.vvisp.json` will be generated. **Do not delete this file.**
+It will act like [this demo](https://youtu.be/tEpBaaZDGpw).
+1. Wait for deploying the sample app.
+Then, `state.vvisp.json` will be generated. **Do not delete this file.**
 
 ### Upgrade to Second Version
-In `service.vvisp.json`, change
+Delete `service.vvisp.json` and change `service2.vvisp.json` to `service.vvisp.json`.
+The differences between `service.vvisp.json` and `service2.vvisp.json` are:
+
+**`service.vvisp.json`**
 ```json
 ...
     "contracts": {
@@ -66,7 +71,7 @@ In `service.vvisp.json`, change
       },
       ...
 ```
-to 
+**`service2.vvisp.json`** 
 ```json
 ...
     "contracts": {
@@ -77,6 +82,7 @@ to
       ...
 ```
 Run `vvisp deploy-service`.
+It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
 
 ## Contract
 
