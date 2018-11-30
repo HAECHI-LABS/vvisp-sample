@@ -1,7 +1,9 @@
 {
   "serviceName": "Example",
   "variables": {
-    "owner": "0xb5F4E40c8177Ad63B19D4D3a254a5758771f57d0"
+    "owner": "0xb5F4E40c8177Ad63B19D4D3a254a5758771f57d0",
+    "totalSupply": 1000000000,
+    "myFriend": "0x88C22c3Fe7A049e42cF4f3a5507e6820F0EceE61"
   },
   "contracts": {
     "Haechi": {
@@ -15,6 +17,19 @@
         "functionName": "initialize",
         "arguments": [
           "${contracts.Haechi.address}"
+        ]
+      }
+    },
+    "Token": {
+      "path": "contracts/SampleToken.sol",
+      "constructorArguments": [
+        "${variables.totalSupply}"
+      ],
+      "initialize": {
+        "functionName": "transfer",
+        "arguments": [
+          "${variables.myFriend}",
+          100000000
         ]
       }
     }
