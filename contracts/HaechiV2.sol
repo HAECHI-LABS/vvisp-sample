@@ -4,9 +4,12 @@ import './HaechiV1.sol';
 
 contract HaechiV2 is HaechiV1 {
     mapping(uint => uint) public heights;
+    
+    event Fly(uint id, uint height);
 
     function fly() public {
         uint id = haechiIds[msg.sender];
         heights[id] = heights[id].add(velocities[id]);
+        emit Fly(id, heights[id]);
     }
 }
