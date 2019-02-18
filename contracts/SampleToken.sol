@@ -1,9 +1,9 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
-import './libs/SafeMath.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 /**
- * @title Sample
+ * @title SampleToken
  * @dev This contract is non-upgradeable contract.
  */
 contract SampleToken {
@@ -16,7 +16,7 @@ contract SampleToken {
     mapping (address => uint256) internal _balances;
     mapping (address => mapping (address => uint256)) internal _allowances;
 
-    constructor(uint totalSupply) public {
+    constructor(uint256 totalSupply) public {
         require(totalSupply > 0);
         _totalSupply = totalSupply;
         _balances[msg.sender] = _totalSupply;
@@ -68,7 +68,7 @@ contract SampleToken {
     }
 
     function decreaseApproval(address spender, uint256 subtractedValue) public {
-        uint oldValue = _allowances[msg.sender][spender];
+        uint256 oldValue = _allowances[msg.sender][spender];
         if (subtractedValue > oldValue) {
             _allowances[msg.sender][spender] = 0;
         } else {
