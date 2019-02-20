@@ -6,6 +6,8 @@ import "./interface/IHaechiV1.sol";
 contract HaechiV1 is IHaechiV1 {
     using SafeMath for uint256;
 
+    uint256 constant INITIAL_VELOCITY = 10;
+
     address internal gym_;
     mapping(address => uint256) internal haechiIds_;
     mapping(uint256 => uint256) internal velocities_;
@@ -28,7 +30,7 @@ contract HaechiV1 is IHaechiV1 {
     function makeNewHaechi(uint256 _id) public {
         require(velocities_[_id] == 0 && distances_[_id] == 0, "Duplicated id");
         haechiIds_[msg.sender] = _id;
-        velocities_[_id] = 10;
+        velocities_[_id] = INITIAL_VELOCITY;
         emit NewHaechi(_id, velocities_[_id]);
     }
 
