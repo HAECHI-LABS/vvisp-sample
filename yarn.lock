@@ -23,10 +23,10 @@
   dependencies:
     openzeppelin-solidity "2.0.0"
 
-"@haechi-labs/vvisp-utils@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@haechi-labs/vvisp-utils/-/vvisp-utils-0.1.10.tgz#6b08110a80502cae892f2ca4adad2b2cf228141d"
-  integrity sha512-D7c41hGwMZLwJGFbFupExytQpJ4czbuDgYt5wj8a4Rj+rwxLISG1wXPD4kbCmMtdRls5uJVFuPjZnkwjysoBzg==
+"@haechi-labs/vvisp-utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@haechi-labs/vvisp-utils/-/vvisp-utils-0.2.1.tgz#edcdf37091ab2127b49c40c5713b542a99a98368"
+  integrity sha512-Y0SGoLETMIh3E4guAF4d6suOGP8Esq636hBAs4pB+CGxTvq98fka0PR9aKtnwOkvWiikzLqoS4xMhCwYnM+DIw==
   dependencies:
     bip39 "^2.5.0"
     chalk "^2.4.1"
