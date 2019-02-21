@@ -23,26 +23,37 @@ contract HaechiV1 is IHaechiV1 {
     function initialize(address _gym) public {
         require(_gym != address(0), "Zero address is invalid");
         require(isInitialized == false, "Already Initialized");
+
         gym_ = _gym;
         isInitialized = true;
     }
 
     function makeNewHaechi(uint256 _id) public {
+        require(_id != 0, "Invalid Id");
         require(velocities_[_id] == 0 && distances_[_id] == 0, "Duplicated id");
-        haechiIds_[msg.sender] = _id;
+
+        address owner = msg.sender;
+        haechiIds_[owner] = _id;
         velocities_[_id] = INITIAL_VELOCITY;
-        emit NewHaechi(_id, velocities_[_id]);
+
+        emit NewHaechi(_id, owner);
     }
 
     function run() public {
         uint256 id = haechiIds_[msg.sender];
-        distances_[id] = distances_[id].add(velocities_[id]);
-        emit Run(id, distances_[id]);
+        require(id != 0, "No registered Haechi");
+
+        uint256 newDistance = distances_[id].add(velocities_[id]);
+        distances_[id] = newDistance;
+
+        emit Run(id, newDistance);
     }
 
     function increaseVelocity(uint256 _haechiId, uint256 _diff) onlyGym public {
-        velocities_[_haechiId] = velocities_[_haechiId].add(_diff);
-        emit IncreaseVelocity(_haechiId, velocities_[_haechiId]);
+        uint256 newVelocity = velocities_[_haechiId].add(_diff);
+        velocities_[_haechiId] = newVelocity;
+
+        emit IncreaseVelocity(_haechiId, newVelocity);
     }
 
     function gym() public view returns(address) {

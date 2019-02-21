@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 contract IHaechiV1 {
-    event NewHaechi(uint256 id, uint256 velocity);
+    event NewHaechi(uint256 id, uint256 owner);
     event Run(uint256 id, uint256 distance);
     event IncreaseVelocity(uint256 id, uint256 velocity);
 

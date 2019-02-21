@@ -14,6 +14,7 @@ contract HaechiGym is Ownable, IHaechiGym {
 
     function setHaechiContract(address _haechi) public onlyOwner {
         require(_haechi != address(0), "Zero address is invalid");
+
         haechi_ = IHaechiV1(_haechi);
     }
 

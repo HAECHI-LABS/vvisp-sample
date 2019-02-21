@@ -8,8 +8,12 @@ contract HaechiV2 is HaechiV1, IHaechiV2 {
 
     function fly() public {
         uint256 id = haechiIds_[msg.sender];
-        heights_[id] = heights_[id].add(velocities_[id]);
-        emit Fly(id, heights_[id]);
+        require(id != 0, "No registered Haechi");
+
+        uint256 newHeight = heights_[id].add(velocities_[id]);
+        heights_[id] = newHeight;
+
+        emit Fly(id, newHeight);
     }
 
     function heights(uint256 _id) public view returns(uint256) {
