@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
-import "./interface/IHaechiV1.sol";
+import "./interface/IHaechi.sol";
 
-contract HaechiV1 is IHaechiV1 {
+contract Haechi is IHaechi {
     using SafeMath for uint256;
 
     uint256 constant INITIAL_VELOCITY = 10;

@@ -7,7 +7,6 @@
   "contracts": {
     "Haechi": {
       "path": "contracts/HaechiV1.sol",
-      "upgradeable": true,
       "initialize": {
         "functionName": "initialize",
         "arguments": [
@@ -17,7 +16,6 @@
     },
     "Gym": {
       "path": "contracts/HaechiGym.sol",
-      "upgradeable": true,
       "initialize": {
         "functionName": "setHaechiContract",
         "arguments": [
