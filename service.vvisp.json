@@ -6,7 +6,7 @@
   },
   "contracts": {
     "Haechi": {
-      "path": "contracts/HaechiV1.sol",
+      "path": "contracts/Haechi.sol",
       "initialize": {
         "functionName": "initialize",
         "arguments": [
