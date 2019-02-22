@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const privateKey = getPrivateKey(process.env.MNEMONIC, process.env.PRIV_INDEX);
 
-const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'HaechiV1.json'), {
+const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'Haechi.json'), {
   encoding: 'utf8'
 });
 
