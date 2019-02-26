@@ -55,8 +55,10 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      renounceOwnership: function(options) {
-        const txData = contract.methods.renounceOwnership().encodeABI();
+      initialize: function(__owner, __haechi, options) {
+        const txData = contract.methods
+          .initialize(__owner, __haechi)
+          .encodeABI();
         options = {
           ...options,
           data: txData
@@ -68,8 +70,8 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      initialize: function(__haechi, options) {
-        const txData = contract.methods.initialize(__haechi).encodeABI();
+      renounceOwnership: function(options) {
+        const txData = contract.methods.renounceOwnership().encodeABI();
         options = {
           ...options,
           data: txData
