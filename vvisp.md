@@ -8,9 +8,9 @@ or
 
 `$ yarn global add @haechi-labs/vvisp`
 
-in your command line tool
+in your command line tool.
 
-after installation, check if you succeeded by
+After installation, check if you succeeded by
 
 `$ vvisp --version`
 
@@ -23,7 +23,7 @@ after installation, check if you succeeded by
 
 # VVISP tutorial - start a project
 
-to start a project with `vvisp`, you should make an empty directory and run `vvisp init` in the directory.
+To start a project with `vvisp`, you should make an empty directory and run `vvisp init` in the directory.
 
 ```shell
 $ mkdir vvisp-tutorial
@@ -60,7 +60,7 @@ Success!
 
 ```
 
-this will generate boilerplate codes for deploying smart contracts.
+This will generate boilerplate codes for developing smart contracts.
 
 ```shell
 ~/Haechi/vvisp-tutorial
@@ -89,15 +89,15 @@ this will generate boilerplate codes for deploying smart contracts.
 5 directories, 14 files
 ```
 
-since our project has high dependency on truffle, directory structure is similar to `truffle init` structure
+Since our project is compatible with truffle, directory structure is similar to `truffle init` structure
 
 - `contracts/` : Directory for Solidity contracts
-- `migrations/` : Direcotry for truffle migration files
+- `migrations/` : Directory for truffle migration files
 - `test/` : Directory for test files
 - `truffle-config.js` : Truffle configuration file
-- scripts/ : Directory for test environment 
-- Service.vvisp.json
-- .env
+- `scripts/` : Directory for test environment 
+- `service.vvisp.json` : Description file for deploying smart contract service.
+- `vvisp-config.js` : vvisp configuration file
 
 
 
@@ -107,7 +107,7 @@ since our project has high dependency on truffle, directory structure is similar
 
 # VVISP tutorial - Command
 
-`vvisp --help` will show you details about vvisp commands
+`vvisp --help` will show you details about vvisp commands.
 
 ```shell
 ~/Haechi/vvisp-tutorial
@@ -140,11 +140,11 @@ Commands:
 
 
 
-overall work flow of deploying smart contract using vvisp command is
+Overall work flow of deploying smart contract using vvisp command is
 
 **init** -> **deploy-service/deploy-contract/compile** -> **abi-to-script** -> **console**
 
-In this section, we will work through whole process using our sample contract [vvisp-sample](https://github.com/HAECHI-LABS/vvisp-sample)
+In this section, we will work through whole process using our sample contracts, [vvisp-sample](https://github.com/HAECHI-LABS/vvisp-sample).
 
 ### init
 
@@ -160,7 +160,7 @@ In this section, we will work through whole process using our sample contract [v
    ex. `ganaeche-cli -m 'hello'` will run ganache-cli with 'hello' mnemonic
 
 4. Write contract in `contracts/` folder.
-   if you are using vvisp-sample,  your contract is already in the folder.
+   If you are using vvisp-sample, your contracts are already in the folder.
 
 ### deploy-service/deploy-contract/compile
 
@@ -173,9 +173,9 @@ In this section, we will work through whole process using our sample contract [v
 
 We will use `deploy-service` for the tutorial.
 
-1. **write your own `service.vvisp.json`**
+1. **Write your own `service.vvisp.json`**
 
-   First, write down your service name
+   First, write down your service name:
 
    ```json
    {
@@ -183,7 +183,7 @@ We will use `deploy-service` for the tutorial.
    }
    ```
 
-   then, write down contracts and file paths you want to deploy
+   Then, write down contracts and file paths you want to deploy:
 
    ```json
    {
@@ -313,7 +313,7 @@ We will use `deploy-service` for the tutorial.
    }
    ```
 
-   since initialize step runs after full deployment, you can get contract address by `${contracts.ContractName.address}`
+   Since initialize step runs after full deployment, you can get contract address by `${contracts.ContractName.address}`
 
    ```json
    {
@@ -422,10 +422,10 @@ We will use `deploy-service` for the tutorial.
 
 ### abi-to-script
 
-`vvisp abi-to-script` will generate abis and script for calling smartcontract functions with javascript.
+`vvisp abi-to-script` will generate abis and script for calling smart contract functions with javascript.
 Generated files will be placed in `contractApis/` folder.
 
-in vvisp-sample, we need to generate for 3 contracts
+In vvisp-sample, we need to generate for 3 contracts
 
 - Haechi.sol
 - Gym.sol
@@ -434,12 +434,10 @@ in vvisp-sample, we need to generate for 3 contracts
 So following commands are needed.
 
 ```shell
-$ vvisp abi-to-script contracts/Haechi.sol
-$ vvisp abi-to-script contracts/Gym.sol
-$ vvisp abi-to-script contracts/SampltToken.sol
+$ vvisp abi-to-script contracts/Haechi.sol contracts/Gym.sol contracts/SampltToken.sol
 ```
 
-after the commands, structure of contractApis will be
+After running the commands, structure of `contractApis/` will be:
 
 ```shell
 vvisp-sample git/master
@@ -461,11 +459,11 @@ contractApis
 
 `vvisp console` uses contractApis to interact with smart contracts.
 
-If smart contracts written in `service.vvisp.json` does not exists in `contractApis/` , `vvisp console` will crash.
+If smart contracts written in `service.vvisp.json` does not exists in `contractApis/` , `vvisp console` will throw error.
 
 ### console
 
-now it's time for `vvisp console`
+Now it's time for `vvisp console`
 
 ```shell
 vvisp-sample git/master
@@ -483,9 +481,9 @@ Use exit or Ctrl-c to exit
 >>
 ```
 
-when you run vvisp console, you can see contracts and contract addresses you can interact
+When you run vvisp console, you can see contracts and contract addresses you can interact
 
-now call
+Now call
 
 `help`
 
@@ -509,17 +507,18 @@ Commands:
 >>
 ```
 
-You can see lists of commands you can use in `vvisp console`
+You can see lists of commands you can use in `vvisp console`.
 
-- `register` is for contracts not included in `service.vvisp.json` but exists in `contractApis/`
+- `register`: For contracts not included in `service.vvisp.json` but exists in `contractApis/`.
+You can register an address.
 
-- `list` is a command you can see which contracts you can use
-- `show` : show methods of a certain contract
-- `call` : call function with prarameters
+- `list` : A command you can see which contracts you can use.
+- `show` : Show methods of a certain contract.
+- `call` : Call a function with parameters.
 
 
 
-lets start with `show`
+Let's start with `show`
 
 ```shell
 >> show Haechi
@@ -537,17 +536,17 @@ initialize                              [__gym, options]
 >>
 ```
 
-`show Haechi` will list all methods in Haechi contract
+`show Haechi` will list all methods of `Haechi` contract.
 
 #### creating Haechi
 
-let's create new Haechi 
+Let's create new Haechi.
 
-before creating, check if user has Haechi
+Before creating, check if user has Haechi.
 
-in `ganache-cli`, there are addresses generated using mnemonic
+In `ganache-cli`, there are addresses generated by using mnemonic.
 
-`vvisp deploy-service` and `vvisp console` uses 0th address as default, check if 0th address has any haechi.
+`vvisp deploy-service` and `vvisp console` use 0th address as default, check if 0th address has any haechi.
 
 ```shell
 #ganache-cli
@@ -574,9 +573,9 @@ Available Accounts
 >>
 ```
 
-since we did not created any haechi after deployment, 0th address has no haechi so returns `0`
+Since we did not created any haechi after deployment, 0th address has no haechi so returns `0`.
 
-let's create haechi by calling `makeNewHaechi`
+Let's create haechi by calling `makeNewHaechi`.
 
 ```shell
 >> call Haechi makeNewHaechi 1234
@@ -603,13 +602,14 @@ let's create haechi by calling `makeNewHaechi`
 
 Printed json object is receipt describing the transaction.
 
-in "logs" field, you can see `NewHaechi` event called with
-
+In "logs" field, you can see `NewHaechi` event called with
+```
 '1234', '0xb5F4E40c8177Ad63B19D4D3a254a5758771f57d0'
+```
 
 1234 will be our haechi's id.
 
-Now, check haechiId owned by 0th address
+Now, check haechiId is owned by 0th address.
 
 ```shell
 >> call Haechi haechiIds 0xb5f4e40c8177ad63b19d4d3a254a5758771f57d0
