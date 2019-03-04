@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@haechi-labs/vvisp-utils": "^0.2.1",
-    "@haechi-labs/vvisp-contracts": "^0.1.1",
+    "@haechi-labs/vvisp-utils": "^1.0.0",
+    "@haechi-labs/vvisp-contracts": "^1.0.0",
     "coveralls": "^3.0.1",
     "dotenv": "^5.0.1",
     "eth-gas-reporter": "^0.1.7",
