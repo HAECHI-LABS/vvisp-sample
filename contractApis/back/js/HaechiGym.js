@@ -1,15 +1,13 @@
 const path = require('path');
-const { getWeb3, getPrivateKey, sendTx } = require('@haechi-labs/vvisp-utils');
-const web3 = getWeb3();
+const { Config, web3Store, sendTx } = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
-
-const privateKey = getPrivateKey(process.env.MNEMONIC, process.env.PRIV_INDEX);
 
 const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'HaechiGym.json'), {
   encoding: 'utf8'
 });
 
 module.exports = function(_contractAddr = '') {
+  const web3 = web3Store.get();
   const contract = new web3.eth.Contract(JSON.parse(abi));
   contract.options.address = _contractAddr;
   return {
@@ -38,7 +36,7 @@ module.exports = function(_contractAddr = '') {
         return sendTx(
           contract.options.address,
           options ? options.value : 0,
-          privateKey,
+          loadPrivateKey(),
           options
         );
       },
@@ -51,7 +49,7 @@ module.exports = function(_contractAddr = '') {
         return sendTx(
           contract.options.address,
           options ? options.value : 0,
-          privateKey,
+          loadPrivateKey(),
           options
         );
       },
@@ -64,20 +62,7 @@ module.exports = function(_contractAddr = '') {
         return sendTx(
           contract.options.address,
           options ? options.value : 0,
-          privateKey,
-          options
-        );
-      },
-      initialize: function(__haechi, options) {
-        const txData = contract.methods.initialize(__haechi).encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          privateKey,
+          loadPrivateKey(),
           options
         );
       },
@@ -92,10 +77,14 @@ module.exports = function(_contractAddr = '') {
         return sendTx(
           contract.options.address,
           options ? options.value : 0,
-          privateKey,
+          loadPrivateKey(),
           options
         );
       }
     }
   };
 };
+
+function loadPrivateKey() {
+  return Config.get().from;
+}
