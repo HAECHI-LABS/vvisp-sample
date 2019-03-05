@@ -1,5 +1,6 @@
 {
   "serviceName": "Haechi-Games",
+  "registry": true,
   "variables": {
     "totalSupply": 1000000000,
     "myFriend": "0x88C22c3Fe7A049e42cF4f3a5507e6820F0EceE61"
@@ -13,7 +14,7 @@
       "path": "contracts/HaechiGym.sol",
       "upgradeable": true,
       "initialize": {
-        "functionName": "setHaechiContract",
+        "functionName": "initialize",
         "arguments": [
           "${contracts.Haechi.address}"
         ]

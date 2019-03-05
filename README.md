@@ -18,12 +18,12 @@ $ vvisp init
 **3. Make your Contracts at `contracts/`**
 
 We do not recommend generated contracts by `$ vvisp init`.
-Now, you can use `abi-to-script`, `compile` and `flatten` commands.
+Now, you can use `gen-script`, `compile` and `flatten` commands.
 
-**4. Set `.env` file**
+**4. Set `vvisp-config.js` file**
 
-Please set environment variables in `.env` file.
-See [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#env) for more information about `.env`.
+Please set environment variables in `vvisp-config.js` file.
+See [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#config) for more information about `vvisp-config.js`.
 Now you can use `deploy-contract` command.
 
 **5. Set `service.vvisp.json` file**
@@ -41,14 +41,13 @@ git clone https://github.com/HAECHI-LABS/vvisp-sample
 ### Deploy First Version
 
 1. Install `vvisp`. See [Details](https://github.com/HAECHI-LABS/vvisp#usage)
-1. Sample files are already made.
-Change the written address at `variables/owner` in `service.vvisp.json` file to an address which will send transactions.
+1. Sample `service.vvisp.json` file is already made.
 1. Change the written mnemonic words at `MNEMONIC` in `.env` file to mnemonic words of owner account.
 (If you don't want to connect to local 8545, see [here](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#env) and change `.env`.)
 1. Run `vvisp deploy-service` at root directory.
 It will act like [this demo](https://youtu.be/tEpBaaZDGpw).
 1. Wait for deploying the sample app.
-Then, `state.vvisp.json` will be generated. **Do not delete this file.**
+Then, `state.vvisp.json` will be generated. **This file is necessary to upgrade your service**
 
 ### Upgrade to Second Version
 Delete `service.vvisp.json` and change `service2.vvisp.json` to `service.vvisp.json`.
@@ -87,7 +86,7 @@ It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
 ## Contract
 
 - Create your own contracts in `contracts/` directory.
-- Not recommend modifying contracts in `libs/` and `upgradeable/` directory.
+- Not recommend modifying contracts in `upgradeable/` directory.
 
 ## Test
 
@@ -97,12 +96,12 @@ It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
 
 ## Deploy
 
-- Make `.env` and `service.vvisp.json`.
+- Make `vvisp-config.js` and `service.vvisp.json`.
 
 Please see linked documentation below for details:
 - [deploy-contract](https://github.com/HAECHI-LABS/vvisp/commands/README.md#deploy-contract): Deploy contract
 - [deploy-service](https://github.com/HAECHI-LABS/vvisp/commands/README.md#deploy-service): Deploy service according to Upgradeable Smart Contract Framework
-- [configuration files](https://github.com/HAECHI-LABS/vvisp/CONFIGURATION.md): Configuration guide about `.env ` and `service.vvisp.json`
+- [configuration files](https://github.com/HAECHI-LABS/vvisp/CONFIGURATION.md): Configuration guide about `vvisp-config.js ` and `service.vvisp.json`
 
 ## Contact 
 

@@ -1,7 +1,7 @@
 {
   "serviceName": "Haechi-Games",
+  "registry": true,
   "variables": {
-    "owner": "0x84a922cc95a22ec55c6346bc6ca87c48708fe9d6",
     "totalSupply": 1000000000,
     "myFriend": "0x88C22c3Fe7A049e42cF4f3a5507e6820F0EceE61"
   },
@@ -22,7 +22,6 @@
       "initialize": {
         "functionName": "initialize",
         "arguments": [
-          "${variables.owner}",
           "${contracts.Haechi.address}"
         ]
       }
