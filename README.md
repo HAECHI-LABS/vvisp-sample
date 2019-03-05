@@ -46,10 +46,11 @@ git clone https://github.com/HAECHI-LABS/vvisp-sample
 1. Run `vvisp deploy-service` at root directory.
 It will act like [this demo](https://youtu.be/tEpBaaZDGpw).
 1. Wait for deploying the sample app.
-Then, `state.vvisp.json` will be generated. **Do not delete this file.**
+Then, `state.vvisp.json` will be generated. **This file is necessary to upgrade your service**
 
 ### Upgrade to Second Version
 Add contract property at `service.vvisp.json`.
+If you want to test upgradeable contracts, see upgradeable branch of this repo.
 
 Then, run `vvisp deploy-service`.
 It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
