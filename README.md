@@ -41,8 +41,7 @@ git clone https://github.com/HAECHI-LABS/vvisp-sample
 ### Deploy First Version
 
 1. Install `vvisp`. See [Details](https://github.com/HAECHI-LABS/vvisp#usage)
-1. Sample files are already made.
-Change the written address at `variables/owner` in `service.vvisp.json` file to an address which will send transactions.
+1. Sample `service.vvisp.json` file is already made.
 1. Make `from` variable in `vvisp-config.js`. See [details](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#vvisp-configjs).
 1. Run `vvisp deploy-service` at root directory.
 It will act like [this demo](https://youtu.be/tEpBaaZDGpw).
