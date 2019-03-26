@@ -3,6 +3,9 @@
 > Sample repository about utilizing [vvisp](https://github.com/HAECHI-LABS/vvisp)
 
 ## Quick Usage
+
+>If you want to know how to operate upgradeable service with vvisp, change to `upgradeable` branch and follow the `README.md`.
+
 **1. Install vvisp**
 ```bash
 $ npm install -g @haechi-labs/vvisp
@@ -13,7 +16,9 @@ $ yarn global add @haechi-labs/vvisp
 ```bash
 $ mkdir vvisp-sample
 $ cd vvisp-sample
+
 $ vvisp init
+$ npm install #or yarn install
 ```
 **3. Make your Contracts at `contracts/`**
 
@@ -40,20 +45,39 @@ git clone https://github.com/HAECHI-LABS/vvisp-sample
 ```
 ### Deploy First Version
 
-1. Install `vvisp`. See [Details](https://github.com/HAECHI-LABS/vvisp#usage)
 1. Sample `service.vvisp.json` file is already made.
+1. Default network is `localhost:8545`.
+Use your own client or ganache-cli. (`npm install -g ganache-cli` and `ganache-cli`)
 1. Make `from` variable in `vvisp-config.js`. See [details](https://github.com/HAECHI-LABS/vvisp/blob/dev/CONFIGURATION.md#vvisp-configjs).
+If you use ganache, get the mnemonic key used in ganache and enter it.
 1. Run `vvisp deploy-service` at root directory.
 It will act like [this demo](https://youtu.be/tEpBaaZDGpw).
 1. Wait for deploying the sample app.
 Then, `state.vvisp.json` will be generated. **This file is necessary to upgrade your service**
 
 ### Upgrade to Second Version
-Add contract property at `service.vvisp.json`.
-If you want to test upgradeable contracts, see upgradeable branch of this repo.
+Add contract property at `service.vvisp.json#contracts` like:
+```json
+"contracts": {
+  ...
+  "NewContract": {
+    "path": "contracts/NewContract.sol"
+  }
+}
+```
 
 Then, run `vvisp deploy-service`.
 It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
+
+### Use console
+If the service is already deployed and has `state.vvisp.json`(**necessary**), you can operate your contracts with `vvisp console`.
+
+First, make apis of contracts which are written in `state.vvisp.json`.
+```bash
+ $ vvisp gen-script contracts/Haechi.sol contracts/HaechiGym.sol contracts/SampleToken.sol
+```
+
+Then run `vvisp console` and operate functions of your contracts.
 
 ## Contract
 
@@ -73,7 +97,8 @@ It will act like [this demo](https://youtu.be/f4WaBhsk_IQ).
 Please see linked documentation below for details:
 - [deploy-contract](https://github.com/HAECHI-LABS/vvisp/commands/README.md#deploy-contract): Deploy contract
 - [deploy-service](https://github.com/HAECHI-LABS/vvisp/commands/README.md#deploy-service): Deploy service of your contracts
-- [configuration files](https://github.com/HAECHI-LABS/vvisp/CONFIGURATION.md): Configuration guide about `vvisp-config.js ` and `service.vvisp.json`
+- [console](https://github.com/HAECHI-LABS/vvisp/commands/README.md#console): Console to operate your contracts
+- [configuration files](https://github.com/HAECHI-LABS/vvisp/CONFIGURATION.md): Configuration guide about `vvisp-config.js` and `service.vvisp.json`
 
 ## Contact 
 
