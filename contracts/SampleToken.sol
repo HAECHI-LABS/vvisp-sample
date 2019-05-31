@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
@@ -20,7 +20,7 @@ contract SampleToken {
         require(totalSupply > 0);
         _totalSupply = totalSupply;
         _balances[msg.sender] = _totalSupply;
-        emit Transfer(0x0, msg.sender, _totalSupply);
+        emit Transfer(address(0), msg.sender, _totalSupply);
     }
 
     function totalSupply() public view returns (uint256) {

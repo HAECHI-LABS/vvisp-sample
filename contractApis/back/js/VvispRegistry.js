@@ -19,8 +19,8 @@ module.exports = function(_contractAddr = '') {
       return contract.options.address;
     },
     methods: {
-      upgradeableKeyAddresses: function(_input1) {
-        return contract.methods.upgradeableKeyAddresses(_input1).call();
+      contractSets: function(input1) {
+        return contract.methods.contractSets(input1).call();
       },
       owner: function() {
         return contract.methods.owner().call();
@@ -28,34 +28,8 @@ module.exports = function(_contractAddr = '') {
       isOwner: function() {
         return contract.methods.isOwner().call();
       },
-      upgradeableSets: function(_input1) {
-        return contract.methods.upgradeableSets(_input1).call();
-      },
-      nonUpgradeableKeyAddresses: function(_input1) {
-        return contract.methods.nonUpgradeableKeyAddresses(_input1).call();
-      },
-      nonUpgradeableSets: function(_input1) {
-        return contract.methods.nonUpgradeableSets(_input1).call();
-      },
-      updateFileNames: function(
-        __keyAddresses,
-        __fileNames,
-        __fileNameLength,
-        options
-      ) {
-        const txData = contract.methods
-          .updateFileNames(__keyAddresses, __fileNames, __fileNameLength)
-          .encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          loadPrivateKey(),
-          options
-        );
+      contractKeyAddresses: function(input1) {
+        return contract.methods.contractKeyAddresses(input1).call();
       },
       renounceOwnership: function(options) {
         const txData = contract.methods.renounceOwnership().encodeABI();
@@ -70,34 +44,21 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      createProxy: function(_name, options) {
-        const txData = contract.methods.createProxy(_name).encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          loadPrivateKey(),
-          options
-        );
-      },
-      setNonUpgradeables: function(
-        __addresses,
-        __names,
-        __nameLength,
-        __fileNames,
-        __fileNameLength,
+      registerContractInfo: function(
+        _addresses,
+        _names,
+        _nameLength,
+        _fileNames,
+        _fileNameLength,
         options
       ) {
         const txData = contract.methods
-          .setNonUpgradeables(
-            __addresses,
-            __names,
-            __nameLength,
-            __fileNames,
-            __fileNameLength
+          .registerContractInfo(
+            _addresses,
+            _names,
+            _nameLength,
+            _fileNames,
+            _fileNameLength
           )
           .encodeABI();
         options = {
@@ -111,31 +72,8 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      upgradeToAndCalls: function(
-        __proxies,
-        __business,
-        __data,
-        __length,
-        options
-      ) {
-        const txData = contract.methods
-          .upgradeToAndCalls(__proxies, __business, __data, __length)
-          .encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          loadPrivateKey(),
-          options
-        );
-      },
-      transferOwnership: function(_newOwner, options) {
-        const txData = contract.methods
-          .transferOwnership(_newOwner)
-          .encodeABI();
+      transferOwnership: function(newOwner, options) {
+        const txData = contract.methods.transferOwnership(newOwner).encodeABI();
         options = {
           ...options,
           data: txData

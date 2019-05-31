@@ -2,9 +2,10 @@ const path = require('path');
 const { Config, web3Store, sendTx } = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
 
-const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'Haechi.json'), {
-  encoding: 'utf8'
-});
+const abi = fs.readFileSync(
+  path.join(__dirname, '../abi/', 'SampleToken.json'),
+  { encoding: 'utf8' }
+);
 
 module.exports = function(_contractAddr = '') {
   const web3 = web3Store.get();
@@ -18,20 +19,17 @@ module.exports = function(_contractAddr = '') {
       return contract.options.address;
     },
     methods: {
-      velocities: function(_id) {
-        return contract.methods.velocities(_id).call();
+      totalSupply: function() {
+        return contract.methods.totalSupply().call();
       },
-      haechiIds: function(_owner) {
-        return contract.methods.haechiIds(_owner).call();
+      balanceOf: function(owner) {
+        return contract.methods.balanceOf(owner).call();
       },
-      distances: function(_id) {
-        return contract.methods.distances(_id).call();
+      allowance: function(owner, spender) {
+        return contract.methods.allowance(owner, spender).call();
       },
-      gym: function() {
-        return contract.methods.gym().call();
-      },
-      makeNewHaechi: function(_id, options) {
-        const txData = contract.methods.makeNewHaechi(_id).encodeABI();
+      approve: function(spender, value, options) {
+        const txData = contract.methods.approve(spender, value).encodeABI();
         options = {
           ...options,
           data: txData
@@ -43,9 +41,9 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      increaseVelocity: function(_haechiId, _diff, options) {
+      transferFrom: function(from, to, value, options) {
         const txData = contract.methods
-          .increaseVelocity(_haechiId, _diff)
+          .transferFrom(from, to, value)
           .encodeABI();
         options = {
           ...options,
@@ -58,8 +56,10 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      run: function(options) {
-        const txData = contract.methods.run().encodeABI();
+      decreaseApproval: function(spender, subtractedValue, options) {
+        const txData = contract.methods
+          .decreaseApproval(spender, subtractedValue)
+          .encodeABI();
         options = {
           ...options,
           data: txData
@@ -71,8 +71,23 @@ module.exports = function(_contractAddr = '') {
           options
         );
       },
-      initialize: function(_gym, options) {
-        const txData = contract.methods.initialize(_gym).encodeABI();
+      transfer: function(to, value, options) {
+        const txData = contract.methods.transfer(to, value).encodeABI();
+        options = {
+          ...options,
+          data: txData
+        };
+        return sendTx(
+          contract.options.address,
+          options ? options.value : 0,
+          loadPrivateKey(),
+          options
+        );
+      },
+      increaseApproval: function(spender, addedValue, options) {
+        const txData = contract.methods
+          .increaseApproval(spender, addedValue)
+          .encodeABI();
         options = {
           ...options,
           data: txData

@@ -4,8 +4,6 @@
 
 ## Quick Usage
 
->If you want to know how to operate upgradeable service with vvisp, change to `upgradeable` branch and follow the `README.md`.
-
 **1. Install vvisp**
 ```bash
 $ npm install -g @haechi-labs/vvisp
@@ -82,7 +80,7 @@ Then run `vvisp console` and operate functions of your contracts.
 ## Contract
 
 - Create your own contracts in `contracts/` directory.
-- Not recommend modifying contracts in `upgradeable/` directory.
+- Not recommend modifying contracts in `vvsip/` directory.
 
 ## Test
 

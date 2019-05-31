@@ -2,7 +2,7 @@ const path = require('path');
 const { Config, web3Store, sendTx } = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
 
-const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'Haechi.json'), {
+const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'IHaechi.json'), {
   encoding: 'utf8'
 });
 

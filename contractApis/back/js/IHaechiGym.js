@@ -2,9 +2,10 @@ const path = require('path');
 const { Config, web3Store, sendTx } = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
 
-const abi = fs.readFileSync(path.join(__dirname, '../abi/', 'HaechiGym.json'), {
-  encoding: 'utf8'
-});
+const abi = fs.readFileSync(
+  path.join(__dirname, '../abi/', 'IHaechiGym.json'),
+  { encoding: 'utf8' }
+);
 
 module.exports = function(_contractAddr = '') {
   const web3 = web3Store.get();
@@ -21,12 +22,6 @@ module.exports = function(_contractAddr = '') {
       haechi: function() {
         return contract.methods.haechi().call();
       },
-      owner: function() {
-        return contract.methods.owner().call();
-      },
-      isOwner: function() {
-        return contract.methods.isOwner().call();
-      },
       makeFaster: function(options) {
         const txData = contract.methods.makeFaster().encodeABI();
         options = {
@@ -42,32 +37,6 @@ module.exports = function(_contractAddr = '') {
       },
       setHaechiContract: function(_haechi, options) {
         const txData = contract.methods.setHaechiContract(_haechi).encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          loadPrivateKey(),
-          options
-        );
-      },
-      renounceOwnership: function(options) {
-        const txData = contract.methods.renounceOwnership().encodeABI();
-        options = {
-          ...options,
-          data: txData
-        };
-        return sendTx(
-          contract.options.address,
-          options ? options.value : 0,
-          loadPrivateKey(),
-          options
-        );
-      },
-      transferOwnership: function(newOwner, options) {
-        const txData = contract.methods.transferOwnership(newOwner).encodeABI();
         options = {
           ...options,
           data: txData

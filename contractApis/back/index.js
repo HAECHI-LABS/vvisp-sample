@@ -15,6 +15,10 @@ function loadApis() {
 
   apis['Haechi'] = require('./js/Haechi.js');
   apis['HaechiGym'] = require('./js/HaechiGym.js');
+  apis['IHaechi'] = require('./js/IHaechi.js');
+  apis['IHaechiGym'] = require('./js/IHaechiGym.js');
+  apis['Migrations'] = require('./js/Migrations.js');
+  apis['SampleToken'] = require('./js/SampleToken.js');
   apis['VvispRegistry'] = require('./js/VvispRegistry.js');
   return apis;
 }
