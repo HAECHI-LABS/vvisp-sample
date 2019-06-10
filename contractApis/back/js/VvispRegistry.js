@@ -1,5 +1,9 @@
 const path = require('path');
-const { Config, web3Store, sendTx } = require('@haechi-labs/vvisp-utils');
+const {
+  Config,
+  getContractFactory,
+  sendTx
+} = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
 
 const abi = fs.readFileSync(
@@ -8,8 +12,9 @@ const abi = fs.readFileSync(
 );
 
 module.exports = function(_contractAddr = '') {
-  const web3 = web3Store.get();
-  const contract = new web3.eth.Contract(JSON.parse(abi));
+  const platform = Config.get().platform;
+  const Contract = getContractFactory({ platform: platform });
+  const contract = new Contract(JSON.parse(abi));
   contract.options.address = _contractAddr;
   return {
     at: function(_addr) {
@@ -35,7 +40,8 @@ module.exports = function(_contractAddr = '') {
         const txData = contract.methods.renounceOwnership().encodeABI();
         options = {
           ...options,
-          data: txData
+          data: txData,
+          platform: platform
         };
         return sendTx(
           contract.options.address,
@@ -63,7 +69,8 @@ module.exports = function(_contractAddr = '') {
           .encodeABI();
         options = {
           ...options,
-          data: txData
+          data: txData,
+          platform: platform
         };
         return sendTx(
           contract.options.address,
@@ -76,7 +83,8 @@ module.exports = function(_contractAddr = '') {
         const txData = contract.methods.transferOwnership(newOwner).encodeABI();
         options = {
           ...options,
-          data: txData
+          data: txData,
+          platform: platform
         };
         return sendTx(
           contract.options.address,
