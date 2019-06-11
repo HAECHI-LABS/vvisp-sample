@@ -6,12 +6,13 @@ const {
 } = require('@haechi-labs/vvisp-utils');
 const fs = require('fs');
 
-const abi = fs.readFileSync(
-  path.join(__dirname, '../abi/', 'VvispRegistry.json'),
-  { encoding: 'utf8' }
-);
+let abi;
 
 module.exports = function(_contractAddr = '') {
+  abi = fs.readFileSync(path.join(__dirname, '../abi/', 'VvispRegistry.json'), {
+    encoding: 'utf8'
+  });
+
   const platform = Config.get().platform;
   const Contract = getContractFactory({ platform: platform });
   const contract = new Contract(JSON.parse(abi));

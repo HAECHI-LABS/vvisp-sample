@@ -20,7 +20,7 @@ $ npm install #or yarn install
 ```
 **3. Make your Contracts at `contracts/`**
 
-We do not recommend generated contracts by `$ vvisp init`.
+We do not recommend to modify generated contracts by `$ vvisp init`.
 Now, you can use `gen-script`, `compile` and `flatten` commands.
 
 **4. Set `vvisp-config.js` file**
@@ -72,7 +72,7 @@ If the service is already deployed and has `state.vvisp.json`(**necessary**), yo
 
 First, make apis of contracts which are written in `state.vvisp.json`.
 ```bash
- $ vvisp gen-script contracts/Haechi.sol contracts/HaechiGym.sol contracts/SampleToken.sol
+ $ vvisp gen-script
 ```
 
 Then run `vvisp console` and operate functions of your contracts.
