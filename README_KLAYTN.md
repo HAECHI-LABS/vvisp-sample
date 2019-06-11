@@ -11,7 +11,7 @@ $ npm install -g @haechi-labs/vvisp
 #or if you use yarn
 $ yarn global add @haechi-labs/vvisp
 ```
-Use version >= v1.2.2
+Use version >= v1.2.3
 
 **2. Initialize your directory**
 ```bash
