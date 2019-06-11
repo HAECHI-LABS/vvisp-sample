@@ -23,7 +23,7 @@ $ npm install #or yarn install
 ```
 **3. Make your Contracts at `contracts/`**
 
-We do not recommend generated contracts by `$ vvisp init`.
+We do not recommend to modify generated contracts in `contracts/vvisp/` by `$ vvisp init`.
 Now, you can use `gen-script`, `compile` and `flatten` commands.
 
 **4. Set `vvisp-config.js` file**
