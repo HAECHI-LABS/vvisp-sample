@@ -13,8 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@haechi-labs/vvisp-contracts": "^2.0.0",
-    "@haechi-labs/vvisp-utils": "^1.1.0",
+    "@haechi-labs/vvisp-utils": "^1.2.0",
     "coveralls": "^3.0.1",
     "eth-gas-reporter": "^0.2.0",
     "ethereumjs-util": "^5.1.2",

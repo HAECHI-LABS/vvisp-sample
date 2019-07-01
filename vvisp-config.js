@@ -10,7 +10,7 @@ externalConfig.networks.ropsten = {
 
 externalConfig.networks.baobab = {
   platform: 'klaytn',
-  url: 'URL_TO_KLAYTN_NODE'
+  url: 'https://api.baobab.klaytn.net:8651'
 };
 
 module.exports = {
@@ -19,4 +19,5 @@ module.exports = {
     mnemonic: MNEMONIC,
     index: 0
   }
+  // from: 'YOUR_PRIVATE_KEY'
 };

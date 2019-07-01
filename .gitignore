@@ -39,3 +39,8 @@ package-lock.json
 .idea
 
 .nyc_output
+
+# auto-gen
+exampleApiUser.js
+contractApis/
+state.vvisp.json

@@ -12,15 +12,13 @@ $ yarn global add @haechi-labs/vvisp
 ```
 **2. Initialize your directory**
 ```bash
-$ mkdir vvisp-sample
+$ vvisp init vvisp-sample
 $ cd vvisp-sample
 
-$ vvisp init
 $ npm install #or yarn install
 ```
 **3. Make your Contracts at `contracts/`**
 
-We do not recommend to modify generated contracts by `$ vvisp init`.
 Now, you can use `gen-script`, `compile` and `flatten` commands.
 
 **4. Set `vvisp-config.js` file**
@@ -80,7 +78,6 @@ Then run `vvisp console` and operate functions of your contracts.
 ## Contract
 
 - Create your own contracts in `contracts/` directory.
-- Not recommend modifying contracts in `vvsip/` directory.
 
 ## Test
 

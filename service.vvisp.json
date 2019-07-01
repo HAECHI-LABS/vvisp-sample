@@ -1,6 +1,5 @@
 {
   "serviceName": "Haechi-Games",
-  "registry": true,
   "variables": {
     "totalSupply": 1000000000,
     "myFriend": "0x88C22c3Fe7A049e42cF4f3a5507e6820F0EceE61"
@@ -8,6 +7,7 @@
   "contracts": {
     "Haechi": {
       "path": "contracts/Haechi.sol",
+      "name": "Haechi",
       "initialize": {
         "functionName": "initialize",
         "arguments": [
@@ -16,7 +16,8 @@
       }
     },
     "Gym": {
-      "path": "contracts/HaechiGym.sol",
+      "path": "./contracts/HaechiGym.sol",
+      "name": "HaechiGym",
       "initialize": {
         "functionName": "setHaechiContract",
         "arguments": [
@@ -26,6 +27,7 @@
     },
     "Token": {
       "path": "contracts/SampleToken.sol",
+      "name": "SampleToken",
       "constructorArguments": [
         "${variables.totalSupply}"
       ],

@@ -1,7 +1,6 @@
-# vvisp
+# vvisp-sample
 
  - [VVISP repository](https://github.com/HAECHI-LABS/vvisp)
- - [Sample repository utilizing vvisp](https://github.com/HAECHI-LABS/vvisp-sample)
 
 ## Quick Usage
 
@@ -11,19 +10,17 @@ $ npm install -g @haechi-labs/vvisp
 #or if you use yarn
 $ yarn global add @haechi-labs/vvisp
 ```
-Use version >= v1.2.3
+Use version >= v2.1.0
 
 **2. Initialize your directory**
 ```bash
-$ mkdir vvisp-sample
+$ vvisp init vvisp-sample --klaytn
 $ cd vvisp-sample
 
-$ vvisp init
 $ npm install #or yarn install
 ```
 **3. Make your Contracts at `contracts/`**
 
-We do not recommend to modify generated contracts in `contracts/vvisp/` by `$ vvisp init`.
 Now, you can use `gen-script`, `compile` and `flatten` commands.
 
 **4. Set `vvisp-config.js` file**
@@ -44,7 +41,14 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: '0.5.8'
+      version: '0.4.24',
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200
+        },
+        evmVersion: 'byzantium'
+      }
     }
   },
   from: { // or from: 'YOUR_PRIVATE_KEY'
@@ -65,13 +69,13 @@ _Example_
 ```json
 {
   "serviceName": "Haechi",
-  "registry": true,
   "variables" : {
     "exampleVarName": 123
   },
   "contracts": {
     "ContractKeyName1": {
-      "path": "path/to/your/contract/Contract1.sol",
+      "path": "./contracts/Contract1.sol",
+      "name": "Contract1",
       "constructorArguments": [
         "${contracts.ContractKeyName1.address}",
         "${variables.exampleVarName}"
@@ -82,7 +86,8 @@ _Example_
       }
     },
     "ContractKeyName2": {
-      "path": "path/to/your/contract/Contract2.sol",
+      "path": "contracts/Contract2.sol",
+      "name": "Contract2",
       "initialize": {
         "functionName": "initialize",
         "arguments": ["argument1", "argument2"]
@@ -112,7 +117,8 @@ Add contract property at `service.vvisp.json#contracts` like:
 "contracts": {
   ...
   "NewContract": {
-    "path": "contracts/NewContract.sol"
+    "path": "contracts/NewContract.sol",
+    "name": "NewContract"
   }
 }
 ```
@@ -137,7 +143,6 @@ Then run `vvisp console` and operate functions of your contracts.
 ## Contract
 
 - Create your own contracts in `contracts/` directory.
-- Not recommend modifying contracts in `vvsip/` directory.
 
 ## Test
 
