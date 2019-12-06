@@ -1,6 +1,6 @@
 const INFURA_API_KEY = 'INPUT_YOUR_INFURA_API_KEY';
 const MNEMONIC =
-  'piano garage flag neglect spare title drill basic strong aware enforce fury';
+  'edge deny stool exchange scout food like plastic jungle wire wild blanket';
 
 const externalConfig = require('./truffle-config');
 
@@ -16,6 +16,7 @@ externalConfig.networks.baobab = {
 module.exports = {
   ...externalConfig,
   from: {
+    type: 'mnemonic',
     mnemonic: MNEMONIC,
     index: 0
   }
